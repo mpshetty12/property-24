@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script type="text/javascript">
+            var sender = localStorage.getItem("email");
+            var receiver = localStorage.getItem("pmail");
+            
+    
+            function send() { 
+            var msg=document.getElementById("mmll").value;
+            var mm = receiver;
+            //alert(mm);
+            Email.send({ 
+                Host: "smtp.gmail.com", 
+                Username: "vocalforlocalteam@gmail.com", 
+                Password: "vocal@local1234", 
+                To: mm, 
+                From: "vocalforlocalteam@gmail.com", 
+                Subject: "Its from a property viewer" + sender + "", 
+                Body: "Respected property owner "    + msg, 
+            }) 
+                .then(function (message) {
+                    alert("successfully sent")
+                  });
+    } 
+    
+        </script>
+        <style>
+            textarea{
+                resize: none;
+                background-color: aliceblue;
+                font-size: large;
+            }
+            body{
+                background-color: brown;
+            }
+            form{
+                padding-left: 20%;
+                padding-top: 10%;
+            }
+        </style>
+    </head>
+    <body>
+        <h3 style="color: blanchedalmond; text-align: center;">Write requesting message to property owner including property name</h3>
+        <form method="post">
+            <textarea id="mmll" rows="8" cols="50" placeholder="write any msg to property owner please include property name"></textarea>
+            <button><input type="button" value="Send Email" onclick="send()"></button>
+        </form>
+    </body>
+</html>
